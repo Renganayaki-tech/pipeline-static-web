@@ -1,13 +1,25 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo "Installing AWS CLI"
+      - pip install awscli
+
   build:
     commands:
-      - echo "Build started"
+      - echo "Build phase running"
+
   post_build:
     commands:
+      - echo "Checking AWS CLI"
+      - aws --version
+
+      - echo "Listing S3 buckets"
+      - aws s3 ls
+
       - echo "Deploying to S3"
-      - aws s3 sync . s3://static-ci-cd-web --delete
+      - aws s3 sync . s3://YOUR-BUCKET-NAME --delete
 
 artifacts:
   files:
