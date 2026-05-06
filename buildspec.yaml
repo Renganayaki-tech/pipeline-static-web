@@ -19,7 +19,7 @@ phases:
       - aws s3 ls
 
       - echo "Deploying to S3"
-      - aws s3 sync . s3://YOUR-BUCKET-NAME --delete
+      - aws s3 sync . s3://static-ci-cd-site --delete
 
 artifacts:
   files:
